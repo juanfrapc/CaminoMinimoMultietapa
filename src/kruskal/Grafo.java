@@ -6,27 +6,17 @@ package kruskal;
  */
 public class Grafo {
     private  int nNodos;
-    private  Arco[] aristas;
-    private int  nArcos;
+    private  ContenedorAristas aristas;
 
     
-    public Grafo(int nNodos, Arco[] aristas) {
+    public Grafo(int nNodos, Arista[] aristas) {
         this.nNodos = nNodos;
-        this.aristas = aristas;
+        this.aristas = new ContenedorAristas(aristas);
     }
 
-    public Grafo(int nNodos, int[][] matAdyacencia) {
-        int cont = 0;
-        for (int i = 0; i < matAdyacencia.length; i++) {
-            for (int j = 0; j < matAdyacencia[i].length; j++) {
-                if (matAdyacencia[i][j] != -1) {
-                    cont++;
-                }
-            }
-        }
-        Arco[] arcos = new Arco[cont];
-        
-        
+    public Grafo(int[][] matAdyacencia) {
+        this.nNodos = matAdyacencia.length;
+        this.aristas = new ContenedorAristas(matAdyacencia);
     }
         
 }

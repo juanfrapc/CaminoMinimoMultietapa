@@ -4,12 +4,12 @@ package kruskal;
  *
  * @author Entrar
  */
-public class Arco {
+public class Arista {
     private final int origen;
     private final int destino;
     private final int peso;
 
-    public Arco(int origen, int destino, int peso) {
+    public Arista(int origen, int destino, int peso) {
         this.origen = origen;
         this.destino = destino;
         this.peso = peso;
