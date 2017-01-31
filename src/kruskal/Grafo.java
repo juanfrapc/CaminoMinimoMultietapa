@@ -18,5 +18,16 @@ public class Grafo {
         this.nNodos = matAdyacencia.length;
         this.aristas = new ContenedorAristas(matAdyacencia);
     }
+
+    public int getnNodos() {
+        return nNodos;
+    }
+
+    public ContenedorAristas getAristas() {
+        return aristas;
+    }
         
+    public Grafo arbolExpansionMinimo(MetodoResolucion metodo){
+        return metodo.resuelve();
+    }
 }
