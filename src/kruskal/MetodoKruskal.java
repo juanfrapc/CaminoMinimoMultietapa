@@ -4,7 +4,7 @@ public class MetodoKruskal implements MetodoResolucion{
 
     @Override
     public String nombre() {
-        return "Algorítmo de Kruskal";
+        return "Algoritmo de Kruskal";
     }
 
     @Override

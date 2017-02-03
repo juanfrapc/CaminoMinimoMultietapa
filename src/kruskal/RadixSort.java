@@ -1,6 +1,5 @@
 package kruskal;
 
-import java.util.Arrays;
 
 public class RadixSort implements MetodoOrdenacion{
 
@@ -13,7 +12,7 @@ public class RadixSort implements MetodoOrdenacion{
     }
 
     @Override
-    public ContenedorAristas ordena(Arista[] aristas, int nAristas) {
+    public void ordena(Arista[] aristas, int nAristas) {
         this.aristas=aristas;
         this.nAristas=nAristas;
         int m = maximo();
@@ -21,7 +20,6 @@ public class RadixSort implements MetodoOrdenacion{
         for (int exp = 1; m/exp > 0; exp *= 10){
             ordenaDígito(exp);
         }
-        return new ContenedorAristas(aristas);
     }
 
     private int maximo() {
@@ -36,8 +34,8 @@ public class RadixSort implements MetodoOrdenacion{
         Arista[] aux= new Arista[nAristas]; 
         int i;
         int[] count = new int[10];
-        Arrays.fill(count,0);
- 
+        for (i = 0; i < count.length; i++) count[i] = 0;
+            
         for (i = 0; i < nAristas; i++) count[(aristas[i].getPeso()/exp)%10]++;
  
         for (i = 1; i < 10; i++) count[i] += count[i - 1];
