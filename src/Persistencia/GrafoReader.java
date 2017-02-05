@@ -2,7 +2,7 @@ package persistencia;
 
 import Model.Grafo;
 
-public interface FileReader {
+public interface GrafoReader {
 
     public Grafo read();
 
