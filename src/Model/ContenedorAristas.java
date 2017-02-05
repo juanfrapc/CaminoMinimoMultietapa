@@ -1,4 +1,7 @@
-package kruskal;
+package Model;
+
+import Control.MetodoOrdenacion;
+
 /**
  *
  * @author 

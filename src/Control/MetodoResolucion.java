@@ -1,4 +1,6 @@
-package kruskal;
+package Control;
+
+import Model.Grafo;
 
 public interface MetodoResolucion {
     

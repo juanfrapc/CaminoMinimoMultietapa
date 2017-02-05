@@ -1,4 +1,6 @@
-package kruskal;
+package Control;
+
+import Model.Grafo;
 
 public class MetodoKruskal implements MetodoResolucion{
 

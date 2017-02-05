@@ -1,5 +1,8 @@
 package kruskal;
 
+import Control.MetodoOrdenacion;
+import Model.Arista;
+
 
 public class RadixSort implements MetodoOrdenacion{
 

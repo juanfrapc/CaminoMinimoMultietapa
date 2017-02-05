@@ -1,4 +1,4 @@
-package kruskal;
+package Model;
 
 /**
  *

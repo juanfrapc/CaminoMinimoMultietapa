@@ -1,4 +1,6 @@
-package kruskal;
+package Model;
+
+import Control.MetodoResolucion;
 
 /**
  *
