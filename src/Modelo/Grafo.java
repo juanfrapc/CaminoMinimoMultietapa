@@ -18,7 +18,7 @@ public class Grafo {
         return nNodos;
     }
 
-    public ContenedorAristas getAristas() {
+    public ContenedorAristas getConjuntoAristas() {
         return aristas;
     }
 }
