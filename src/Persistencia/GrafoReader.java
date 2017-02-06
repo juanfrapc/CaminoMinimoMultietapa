@@ -1,6 +1,6 @@
 package persistencia;
 
-import Model.Grafo;
+import Modelo.Grafo;
 
 public interface GrafoReader {
 

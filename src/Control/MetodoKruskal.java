@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Grafo;
+import Modelo.Grafo;
 
 public class MetodoKruskal implements MetodoResolucion{
 

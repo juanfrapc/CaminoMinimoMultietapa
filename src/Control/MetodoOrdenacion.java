@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Arista;
+import Modelo.Arista;
 
 public interface MetodoOrdenacion {
 

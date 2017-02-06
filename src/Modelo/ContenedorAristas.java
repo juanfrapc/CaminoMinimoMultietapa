@@ -1,11 +1,5 @@
-package Model;
+package Modelo;
 
-import Control.MetodoOrdenacion;
-
-/**
- *
- * @author 
- */
 public class ContenedorAristas {
     private  Arista[] aristas;
     private int  nAristas;
@@ -49,10 +43,6 @@ public class ContenedorAristas {
             return true;
         }
         return false;
-    }
-    
-    public void ordena(MetodoOrdenacion metodo) {
-        metodo.ordena(aristas, nAristas);
-    }   
+    }  
     
 }
