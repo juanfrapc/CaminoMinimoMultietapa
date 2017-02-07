@@ -1,7 +1,9 @@
 package Modelo;
 
-public class ContenedorAristas {
-    private  Arista[] aristas;
+import java.util.Iterator;
+
+public class ContenedorAristas implements Iterable{
+    private  final Arista[] aristas;
     private int  nAristas;
 
     public ContenedorAristas(int nNodos) {
@@ -46,5 +48,23 @@ public class ContenedorAristas {
         }
         return false;
     }  
+
+    @Override
+    public Iterator iterator() {
+        return new Iterator() {
+
+            private int pos=0;
+            
+            @Override
+            public boolean hasNext() {
+                return pos<nAristas;
+            }
+
+            @Override
+            public Object next() {
+                return aristas[pos++];
+            }
+        };
+    }
     
 }
