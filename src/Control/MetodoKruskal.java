@@ -25,14 +25,17 @@ public class MetodoKruskal implements MetodoResolucion {
         int indiceBusqueda=0; // ayuda para considerar aristas examinadas
         
         while(contador != n - 1){
-            Arista arista = grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
-            int uConjunto = buscar(arista.getOrigen(),arista.getDestino());
-            
+            Arista arista = 
+                    grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
+            int origenConjunto = buscar(conjunto, arista.getOrigen());
+            int destinoConjunto = buscar(conjunto, arista.getDestino());
+            if (origenConjunto != destinoConjunto) {
+                fusionar(conjunto, n, origenConjunto, destinoConjunto);
+                solucion.añadeArista(new Arista(origenConjunto, destinoConjunto,
+                        arista.getPeso()));
+            }  
         }
-               
-        
-        
-        return null;
+        return new Grafo(grafo.getnNodos(), solucion.getAristas());
     }
 
     private void initConjuntoNodos(int[] conjunto, int n) {
@@ -41,8 +44,23 @@ public class MetodoKruskal implements MetodoResolucion {
         }
     }
 
-    private int buscar(int origen, int destino) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private int buscar(int[] conjunto, int nodo) {
+        while(conjunto[nodo] > 0) {
+            nodo = conjunto[nodo];
+        }
+        return nodo;
     }
 
+    private void fusionar(int[] conjunto, int n, int nodoA, int nodoB) {
+        if (conjunto[nodoA] == conjunto[nodoB]) {
+            conjunto[nodoA] -= 1;
+            conjunto[nodoB] = nodoA;
+        } else {
+            if (conjunto[nodoA] < conjunto[nodoB]) {
+                conjunto[nodoB] = nodoA;
+            } else {
+                conjunto[nodoA] = nodoB;
+            }
+        }
+    }
 }
