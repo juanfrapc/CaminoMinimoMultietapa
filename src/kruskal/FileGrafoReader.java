@@ -19,7 +19,7 @@ public class FileGrafoReader implements GrafoReader {
         
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-            int nNodos = Integer.parseInt(bufferedReader.readLine().split("=")[1]);
+            int nNodos = Integer.parseInt(bufferedReader.readLine().split("=")[1].trim());
             int[][] mat = new int[nNodos][nNodos];
             String arista;
             int i = 0,j = 0;
@@ -31,7 +31,6 @@ public class FileGrafoReader implements GrafoReader {
                 j=0;
                 i++;                
             }
-            
             return new Grafo(mat);
             
         } catch (IOException ex) {

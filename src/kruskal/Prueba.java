@@ -18,7 +18,7 @@ public class Prueba {
         
         MetodoKruskal kruskal = new MetodoKruskal();
         Grafo solucion = kruskal.resuelve(grafito, new RadixSort());
-        
+        System.out.println(solucion.getConjuntoAristas().getnAristas());
         GrafoPrinter.print(solucion);
     }
     

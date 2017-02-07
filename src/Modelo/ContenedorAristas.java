@@ -8,7 +8,7 @@ public class ContenedorAristas implements Iterable{
 
     public ContenedorAristas(int nNodos) {
         this.nAristas = 0;
-        this.aristas = new Arista[nNodos^2];
+        this.aristas = new Arista[nNodos*nNodos];
     }
     
     public ContenedorAristas(Arista[] aristas) {
@@ -18,7 +18,7 @@ public class ContenedorAristas implements Iterable{
 
     public ContenedorAristas(int[][] matAdyacencia) {
         
-        Arista[] aux = new Arista[matAdyacencia.length^2];
+        Arista[] aux = new Arista[matAdyacencia.length*matAdyacencia.length];
         int cont = 0;
         for (int i = 0; i < matAdyacencia.length; i++) {
             for (int j = 0; j < matAdyacencia[i].length; j++) {

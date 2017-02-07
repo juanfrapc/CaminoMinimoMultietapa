@@ -30,22 +30,22 @@ public class MetodoKruskal implements MetodoResolucion {
             int destinoConjunto = buscar(conjunto, arista.getDestino());
             if (origenConjunto != destinoConjunto) {
                 fusionar(conjunto, n, origenConjunto, destinoConjunto);
-                solucion.añadeArista(new Arista(origenConjunto, destinoConjunto,
-                        arista.getPeso()));
+                solucion.añadeArista(new Arista(arista.getOrigen(),arista.getDestino()
+                        , arista.getPeso()));
                 contador++;
-            }  
+            } 
         }
         return new Grafo(grafo.getnNodos(), solucion);
     }
 
     private void initConjuntoNodos(int[] conjunto, int n) {
         for (int i = 0; i < n; i++) {
-            conjunto[i] = 0;
+            conjunto[i] = -1;
         }
     }
 
     private int buscar(int[] conjunto, int nodo) {
-        while(conjunto[nodo] > 0) {
+        while(conjunto[nodo] > -1) {
             nodo = conjunto[nodo];
         }
         return nodo;
