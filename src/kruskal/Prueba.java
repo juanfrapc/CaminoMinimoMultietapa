@@ -1,5 +1,6 @@
 package kruskal;
 
+import Control.MetodoKruskal;
 import Modelo.Grafo;
 import Vista.GrafoReader;
 
@@ -15,10 +16,10 @@ public class Prueba {
         Grafo grafito = reader.read();
         GrafoPrinter.print(grafito);
         
-        RadixSort radixSort = new RadixSort();
-        radixSort.ordena(grafito.getConjuntoAristas());
-        GrafoPrinter.print(grafito);
+        MetodoKruskal kruskal = new MetodoKruskal();
+        Grafo solucion = kruskal.resuelve(grafito, new RadixSort());
         
+        GrafoPrinter.print(solucion);
     }
     
 }

@@ -11,6 +11,9 @@ public class GrafoPrinter {
 
         System.out.println("A \t B \t Peso");
         for (Arista arista : aristas) {
+            if (arista==null) {
+                break;
+            }
             System.out.println((arista.getOrigen() + 1) + "\t" + 
                     (arista.getDestino() + 1) + "\t" + arista.getPeso());
         }

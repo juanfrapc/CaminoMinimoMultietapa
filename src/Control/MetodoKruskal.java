@@ -16,7 +16,7 @@ public class MetodoKruskal implements MetodoResolucion {
         metodoOrd.ordena(grafo.getConjuntoAristas());
         int n = grafo.getnNodos();
 
-        ContenedorAristas solucion = new ContenedorAristas(0);
+        ContenedorAristas solucion = new ContenedorAristas(n);
         int contador = 0; // Tamaño de solución
         int[] conjunto = new int[n];
         initConjuntoNodos(conjunto, n);
@@ -32,6 +32,7 @@ public class MetodoKruskal implements MetodoResolucion {
                 fusionar(conjunto, n, origenConjunto, destinoConjunto);
                 solucion.añadeArista(new Arista(origenConjunto, destinoConjunto,
                         arista.getPeso()));
+                contador++;
             }  
         }
         return new Grafo(grafo.getnNodos(), solucion.getAristas());

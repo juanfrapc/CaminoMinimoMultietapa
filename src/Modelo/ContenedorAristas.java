@@ -4,9 +4,9 @@ public class ContenedorAristas {
     private  Arista[] aristas;
     private int  nAristas;
 
-    public ContenedorAristas(int nArcos) {
-        this.nAristas = nArcos;
-        this.aristas = new Arista[nArcos];
+    public ContenedorAristas(int nNodos) {
+        this.nAristas = 0;
+        this.aristas = new Arista[nNodos^2];
     }
     
     public ContenedorAristas(Arista[] aristas) {
