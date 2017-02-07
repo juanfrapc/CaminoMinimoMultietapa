@@ -50,10 +50,10 @@ public class ContenedorAristas implements Iterable{
     }  
 
     @Override
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<Arista> iterator() {
+        return new Iterator<Arista>() {
 
-            private int pos=0;
+            int pos = 0;
             
             @Override
             public boolean hasNext() {
@@ -61,10 +61,12 @@ public class ContenedorAristas implements Iterable{
             }
 
             @Override
-            public Object next() {
+            public Arista next() {
                 return aristas[pos++];
             }
         };
     }
+
+    
     
 }

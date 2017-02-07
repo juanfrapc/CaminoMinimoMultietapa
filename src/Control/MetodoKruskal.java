@@ -35,7 +35,7 @@ public class MetodoKruskal implements MetodoResolucion {
                 contador++;
             }  
         }
-        return new Grafo(grafo.getnNodos(), solucion.getAristas());
+        return new Grafo(grafo.getnNodos(), solucion);
     }
 
     private void initConjuntoNodos(int[] conjunto, int n) {

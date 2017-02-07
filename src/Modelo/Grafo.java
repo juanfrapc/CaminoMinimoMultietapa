@@ -1,12 +1,12 @@
 package Modelo;
 
 public class Grafo {
-    private  int nNodos;
-    private  ContenedorAristas aristas;
+    private int nNodos;
+    private ContenedorAristas aristas;
 
-    public Grafo(int nNodos, Arista[] aristas) {
+    public Grafo(int nNodos, ContenedorAristas contenedorAristas) {
         this.nNodos = nNodos;
-        this.aristas = new ContenedorAristas(aristas);
+        this.aristas = contenedorAristas;
     }
 
     public Grafo(int[][] matAdyacencia) {
