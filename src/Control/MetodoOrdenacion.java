@@ -1,10 +1,10 @@
 package Control;
 
-import Modelo.Arista;
+import Modelo.ContenedorAristas;
 
 public interface MetodoOrdenacion {
 
     public String nombre();
-    public void ordena(Arista[] aristas, int nAristas);
+    public void ordena(ContenedorAristas conjunto);
     
 }

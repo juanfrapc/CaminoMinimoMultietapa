@@ -13,8 +13,7 @@ public class MetodoKruskal implements MetodoResolucion {
 
     @Override
     public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) {
-        metodoOrd.ordena(grafo.getConjuntoAristas().getAristas(),
-                grafo.getConjuntoAristas().getnAristas());
+        metodoOrd.ordena(grafo.getConjuntoAristas());
         int n = grafo.getnNodos();
 
         ContenedorAristas solucion = new ContenedorAristas(0);

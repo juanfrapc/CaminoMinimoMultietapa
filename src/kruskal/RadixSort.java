@@ -2,6 +2,7 @@ package kruskal;
 
 import Control.MetodoOrdenacion;
 import Modelo.Arista;
+import Modelo.ContenedorAristas;
 
 
 public class RadixSort implements MetodoOrdenacion{
@@ -15,9 +16,9 @@ public class RadixSort implements MetodoOrdenacion{
     }
 
     @Override
-    public void ordena(Arista[] aristas, int nAristas) {
-        this.aristas=aristas;
-        this.nAristas=nAristas;
+    public void ordena(ContenedorAristas conjunto) {
+        this.aristas=conjunto.getAristas();
+        this.nAristas=conjunto.getnAristas();
         int m = maximo();
  
         for (int exp = 1; m/exp > 0; exp *= 10){

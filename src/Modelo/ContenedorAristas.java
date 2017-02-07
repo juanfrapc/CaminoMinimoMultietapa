@@ -15,18 +15,20 @@ public class ContenedorAristas {
     }
 
     public ContenedorAristas(int[][] matAdyacencia) {
+        
         Arista[] aux = new Arista[matAdyacencia.length^2];
         int cont = 0;
         for (int i = 0; i < matAdyacencia.length; i++) {
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < matAdyacencia[i].length; j++) {
                 if (matAdyacencia[i][j] != -1) {
                     aux[cont++] = new Arista(i, j, matAdyacencia[i][j]);
                 }
             }
         }
+        
         this.aristas = new Arista[cont];
         this.nAristas = cont;
-        System.arraycopy(aux, 0, this.aristas, 0, cont - 1);
+        System.arraycopy(aux, 0, this.aristas, 0, cont);
     }
 
     public Arista[] getAristas() {
