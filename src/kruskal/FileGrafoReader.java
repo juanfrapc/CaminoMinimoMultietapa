@@ -24,7 +24,7 @@ public class FileGrafoReader implements GrafoReader {
             String arista;
             int i = 0, j = 0;
             while ((arista = bufferedReader.readLine()) != null) {
-                String[] parametros = arista.split("\\s");
+                String[] parametros = arista.split("\\s+");
                 for (String parametro : parametros) {
                     mat[i][j++] = Integer.parseInt(parametro);
                 }

@@ -6,6 +6,6 @@ public interface MetodoResolucion {
 
     public String nombre();
 
-    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd);
+    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) throws Exception;
 
 }

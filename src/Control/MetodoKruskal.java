@@ -12,7 +12,7 @@ public class MetodoKruskal implements MetodoResolucion {
     }
 
     @Override
-    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) {
+    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) throws Exception{
         metodoOrd.ordena(grafo.getConjuntoAristas());
         int n = grafo.getnNodos();
 
@@ -24,8 +24,12 @@ public class MetodoKruskal implements MetodoResolucion {
         int indiceBusqueda = 0; // ayuda para considerar aristas examinadas
 
         while (contador != n - 1) {
-            Arista arista
-                    = grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
+            Arista arista;
+            try{
+            arista = grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
+            }catch(IndexOutOfBoundsException e){
+                throw new Exception("Grafo no conexo", e);
+            }
             int origenConjunto = buscar(conjunto, arista.getOrigen());
             int destinoConjunto = buscar(conjunto, arista.getDestino());
             if (origenConjunto != destinoConjunto) {
