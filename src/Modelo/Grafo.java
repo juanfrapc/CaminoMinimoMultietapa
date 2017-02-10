@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Grafo {
+
     private int nNodos;
     private ContenedorAristas aristas;
 

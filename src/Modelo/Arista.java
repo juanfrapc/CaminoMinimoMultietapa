@@ -5,6 +5,7 @@ package Modelo;
  * @author Entrar
  */
 public class Arista {
+
     private final int origen;
     private final int destino;
     private final int peso;
@@ -26,5 +27,5 @@ public class Arista {
     public int getPeso() {
         return peso;
     }
-    
+
 }

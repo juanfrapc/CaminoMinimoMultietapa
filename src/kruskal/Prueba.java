@@ -15,11 +15,11 @@ public class Prueba {
         GrafoReader reader = new FileGrafoReader(path);
         Grafo grafito = reader.read();
         GrafoPrinter.print(grafito);
-        
+
         MetodoKruskal kruskal = new MetodoKruskal();
         Grafo solucion = kruskal.resuelve(grafito, new RadixSort());
         System.out.println(solucion.getConjuntoAristas().getnAristas());
         GrafoPrinter.print(solucion);
     }
-    
+
 }
