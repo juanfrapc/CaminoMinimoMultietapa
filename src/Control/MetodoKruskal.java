@@ -4,6 +4,10 @@ import Modelo.Arista;
 import Modelo.ContenedorAristas;
 import Modelo.Grafo;
 
+/**
+ * Clase que contiene el método de resolcuón de árbol de expansión mínimo.
+ * @author Juan Francisco Pérez Caballero && Gabriel García Buey
+ */
 public class MetodoKruskal implements MetodoResolucion {
 
     @Override
@@ -20,21 +24,26 @@ public class MetodoKruskal implements MetodoResolucion {
         int contador = 0; // Tamaño de solución
         int[] conjunto = new int[n];
         initConjuntoNodos(conjunto, n);
-
-        int indiceBusqueda = 0; // ayuda para considerar aristas examinadas
+        /* Inicializamos el conjunto a -1. No podemos inicializar a 0 porque el 
+        índice 0 corresponde al primer nodo.
+        */
+        int indiceBusqueda = 0; // Ayuda para considerar aristas examinadas
 
         while (contador != n - 1) {
             Arista arista;
             try{
             arista = grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
             }catch(IndexOutOfBoundsException e){
+                // Si no hay más aristas, grafo no conexo.
                 throw new Exception("Grafo no conexo", e);
             }
+            // Buscamos los representantes, es decir, nodos raiz de los árboles
             int origenConjunto = buscar(conjunto, arista.getOrigen());
             int destinoConjunto = buscar(conjunto, arista.getDestino());
             if (origenConjunto != destinoConjunto) {
                 fusionar(conjunto, n, origenConjunto, destinoConjunto);
-                solucion.añadeArista(new Arista(arista.getOrigen(), arista.getDestino(), arista.getPeso()));
+                solucion.añadeArista(new Arista(arista.getOrigen(),
+                        arista.getDestino(), arista.getPeso()));
                 contador++;
             }
         }
