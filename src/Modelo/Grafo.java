@@ -6,37 +6,32 @@ package Modelo;
  */
 public class Grafo {
 
-    private final int nNodos;
-    private final ContenedorAristas aristas;
+    private final int[][] matAdyacencia;
 
     /**
      * @param nNodos
-     * @param contenedorAristas 
      */
-    public Grafo(int nNodos, ContenedorAristas contenedorAristas) {
-        this.nNodos = nNodos;
-        this.aristas = contenedorAristas;
+    public Grafo(int nNodos) {
+        this.matAdyacencia = new int[nNodos][nNodos];
+        for (int[] fila : matAdyacencia) {
+            for (int j = 0; j < fila.length; j++) {
+                fila[j] = -1;
+            }
+        }
     }
 
     /**
      * @param matAdyacencia matriz origen de datos del grafo
      */
     public Grafo(int[][] matAdyacencia) {
-        this.nNodos = matAdyacencia.length;
-        this.aristas = new ContenedorAristas(matAdyacencia);
+        this.matAdyacencia = matAdyacencia;
     }
 
     /**
      * @return Número de nodos.
      */
     public int getnNodos() {
-        return nNodos;
+        return matAdyacencia.length;
     }
 
-    /**
-     * @return Contenedor de aristas
-     */
-    public ContenedorAristas getConjuntoAristas() {
-        return aristas;
-    }
 }
