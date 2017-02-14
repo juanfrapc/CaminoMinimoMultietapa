@@ -1,4 +1,4 @@
-package Kruskal;
+package Aplicacion;
 
 import Control.MetodoKruskal;
 import Modelo.Grafo;
@@ -86,9 +86,7 @@ public class Prueba {
         try {
             grafo = reader.read();
         } catch (Exception ex) {
-            System.err.println("");
-            System.err.println(ex.getMessage());
-            System.err.println("");
+            System.err.println("\n" + ex.getMessage() + "\n");
         }
         return grafo;
     }
@@ -104,9 +102,7 @@ public class Prueba {
         try {
             solucion = kruskal.resuelve(grafo, new RadixSort());
         } catch (Exception ex) {
-            System.err.println("");
-            System.err.println(ex.getMessage());
-            System.err.println("");
+            System.err.println("\n" + ex.getMessage() + "\n");
             return;
         }
         printer.print(solucion);

@@ -1,4 +1,4 @@
-package Kruskal;
+package Aplicacion;
 
 import Modelo.Arista;
 import Modelo.ContenedorAristas;

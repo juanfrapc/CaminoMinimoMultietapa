@@ -1,4 +1,4 @@
-package Kruskal;
+package Aplicacion;
 
 import Modelo.Grafo;
 import java.io.BufferedReader;

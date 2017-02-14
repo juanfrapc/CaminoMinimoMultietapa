@@ -1,4 +1,4 @@
-package Kruskal;
+package Aplicacion;
 
 import Control.MetodoOrdenacion;
 import Modelo.Arista;
