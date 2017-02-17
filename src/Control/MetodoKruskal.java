@@ -1,7 +1,7 @@
 package Control;
 
 import Modelo.Arista;
-import Modelo.ContenedorAristas;
+import Modelo.Collection;
 import Modelo.Grafo;
 
 /**
@@ -20,7 +20,7 @@ public class MetodoKruskal implements MetodoResolucion {
         metodoOrd.ordena(grafo.getConjuntoAristas());
         int n = grafo.getnNodos();
 
-        ContenedorAristas solucion = new ContenedorAristas(n);
+        Collection solucion = new Collection(n);
         int contador = 0; // Tamaño de solución
         int[] conjunto = new int[n];
         initConjuntoNodos(conjunto, n);
@@ -42,7 +42,7 @@ public class MetodoKruskal implements MetodoResolucion {
             int destinoConjunto = buscar(conjunto, arista.getDestino());
             if (origenConjunto != destinoConjunto) {
                 fusionar(conjunto, n, origenConjunto, destinoConjunto);
-                solucion.añadeArista(new Arista(arista.getOrigen(),
+                solucion.add(new Arista(arista.getOrigen(),
                         arista.getDestino(), arista.getPeso()));
                 contador++;
             }

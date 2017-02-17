@@ -1,14 +1,15 @@
 package Modelo;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * Clase de modelo de contenedor de aristas.
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
-public class ContenedorAristas implements Iterable<Arista> {
+public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
 
-    private Arista[] aristas;
+    private final Arista[] aristas;
     private int nAristas;
 
     /**
@@ -55,20 +56,13 @@ public class ContenedorAristas implements Iterable<Arista> {
         return aristas;
     }
 
-    /**
-     *
-     * @return Número de aristas
-     */
-    public int getnAristas() {
+    @Override
+    public int size() {
         return nAristas;
     }
 
-    /**
-     *
-     * @param arista
-     * @return true si la adición es correcta.
-     */
-    public boolean añadeArista(Arista arista) {
+    @Override
+    public boolean add(Arista arista) {
         if (nAristas < aristas.length) {
             aristas[nAristas++] = arista;
             return true;
@@ -100,6 +94,84 @@ public class ContenedorAristas implements Iterable<Arista> {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
         };
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.nAristas==0;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        for (Arista a : this.aristas) {
+            if (a.equals(o)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return this.aristas;
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        Arista arista = (Arista) o;
+        int i;
+        for (i = 0; i < nAristas; i++) {
+            if (this.aristas[i]==arista) {
+                break;
+            }
+        }
+        if (i==nAristas) {
+            return false;
+        }
+        for (int j = i; j < nAristas - 1; j++) {
+            aristas[j]=aristas[j+1];
+        }
+        nAristas--;
+        return true;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        for (Object o : c) {
+            if (!this.contains((Arista) o)) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends Arista> c) {
+        for (Arista arista : c) {
+            if (! this.add(arista)) return false;  
+        }
+        return true;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        for (Object o : c) {
+            if (! this.add((Arista) o)) return false;  
+        }
+        return true;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void clear() {
+        this.nAristas=0;
     }
 
 }

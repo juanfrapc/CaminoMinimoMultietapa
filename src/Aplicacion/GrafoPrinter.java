@@ -1,7 +1,7 @@
 package Aplicacion;
 
 import Modelo.Arista;
-import Modelo.ContenedorAristas;
+import Modelo.Collection;
 import Modelo.Grafo;
 
 /**
@@ -31,7 +31,7 @@ public class GrafoPrinter {
      */
     public void print(Grafo grafo) {
 
-        ContenedorAristas aristas = grafo.getConjuntoAristas();
+        Collection aristas = grafo.getConjuntoAristas();
 
         System.out.println("NodoA\tNodoB\tPeso");
         

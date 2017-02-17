@@ -2,7 +2,7 @@ package Aplicacion;
 
 import Control.MetodoOrdenacion;
 import Modelo.Arista;
-import Modelo.ContenedorAristas;
+import Modelo.Collection;
 
 /**
  * Classe que implementa el metodo de ordenación "Radix Sort"
@@ -19,9 +19,9 @@ public class RadixSort implements MetodoOrdenacion {
     }
 
     @Override
-    public void ordena(ContenedorAristas conjunto) {
+    public void ordena(Collection conjunto) {
         this.aristas = conjunto.getAristas();
-        this.nAristas = conjunto.getnAristas();
+        this.nAristas = conjunto.size();
         int m = maximo();
 
         for (int exp = 1; m / exp > 0; exp *= 10) {
