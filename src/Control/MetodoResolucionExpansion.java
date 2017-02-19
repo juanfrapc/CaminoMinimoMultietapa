@@ -1,12 +1,13 @@
 package Control;
 
 import Modelo.Grafo;
+import Modelo.GrafoOrdenable;
 
 /**
  * Interfaz de metodo de rosolucion de problemas
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
-public interface MetodoResolucion {
+public interface MetodoResolucionExpansion {
 
     /**
      * @return Nombre del metodo
@@ -20,6 +21,6 @@ public interface MetodoResolucion {
      * @return Grafo Solucion
      * @throws Exception Grafo no conexo
      */
-    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) throws Exception;
+    public Grafo resuelve(GrafoOrdenable grafo, MetodoOrdenacion metodoOrd) throws Exception;
 
 }

@@ -1,14 +1,12 @@
 package Modelo;
 
-import java.util.Collection;
-
 /**
  * Clase de modelo de un grafo
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
 public class GrafoOrdenable implements Grafo{
 
-    private final Collection aristas;
+    private final Contenedor aristas;
     private final int nNodos; 
 
     /**
@@ -16,10 +14,16 @@ public class GrafoOrdenable implements Grafo{
      */
     public GrafoOrdenable(int[][] matAdyacencia) {
         this.nNodos=matAdyacencia.length;
-        this.aristas = new ContenedorAristas(matAdyacencia) {};
+        this.aristas = new ContenedorAristas(matAdyacencia);
     }
 
-    public Collection getContenedor() {
+    public GrafoOrdenable(int nNodos, ContenedorAristas solucion) {
+        this.nNodos=nNodos;
+        this.aristas = solucion;
+    }
+
+    @Override
+    public Contenedor getContenedor() {
         return aristas;
     }
 
@@ -30,6 +34,6 @@ public class GrafoOrdenable implements Grafo{
 
     @Override
     public int getnAristas() {
-        return this.aristas.size();
+        return this.aristas.tamaño();
     }
 }

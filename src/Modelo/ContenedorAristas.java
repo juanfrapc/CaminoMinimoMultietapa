@@ -1,13 +1,12 @@
 package Modelo;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * Clase de modelo de contenedor de aristas.
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
-public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
+public class ContenedorAristas implements Contenedor{
 
     private final Arista[] aristas;
     private int nAristas;
@@ -57,14 +56,14 @@ public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
     }
 
     @Override
-    public int size() {
+    public int tamaño() {
         return nAristas;
     }
 
     @Override
-    public boolean add(Arista arista) {
+    public boolean añadeArista(int origen, int destino, int peso) {
         if (nAristas < aristas.length) {
-            aristas[nAristas++] = arista;
+            aristas[nAristas++] = new Arista(origen, destino, peso);
             return true;
         }
         return false;
@@ -102,9 +101,9 @@ public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
     }
 
     @Override
-    public boolean contains(Object o) {
+    public boolean existeArista(int origen, int destino) {
         for (Arista a : this.aristas) {
-            if (a.equals(o)) {
+            if (a.getOrigen()==origen && a.getDestino()==destino) {
                 return true;
             }
         }
@@ -112,21 +111,11 @@ public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
     }
 
     @Override
-    public Object[] toArray() {
-        return this.aristas;
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        Arista arista = (Arista) o;
+    public boolean remove(int origen, int destino) {
         int i;
         for (i = 0; i < nAristas; i++) {
-            if (this.aristas[i]==arista) {
+            if (this.aristas[i].getOrigen()==origen &&
+                    this.aristas[i].getDestino()==destino) {
                 break;
             }
         }
@@ -141,36 +130,7 @@ public class ContenedorAristas implements Iterable<Arista>, Collection<Arista>{
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
-        for (Object o : c) {
-            if (!this.contains((Arista) o)) return false;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends Arista> c) {
-        for (Arista arista : c) {
-            if (! this.add(arista)) return false;  
-        }
-        return true;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        for (Object o : c) {
-            if (! this.add((Arista) o)) return false;  
-        }
-        return true;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void clear() {
+    public void limpiar() {
         this.nAristas=0;
     }
 

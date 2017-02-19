@@ -2,6 +2,7 @@ package Aplicacion;
 
 import Control.MetodoKruskal;
 import Modelo.Grafo;
+import Modelo.GrafoOrdenable;
 import Vista.GrafoReader;
 import java.util.Scanner;
 
@@ -38,11 +39,11 @@ public class Prueba {
                 case "1": // a través de fichero
                     System.out.print("Introduzca la ruta absoluta del fichero de texto: ");
                     path = userInput.nextLine();
-                    grafo = cargarGrafo(path);
+                    grafo = cargarGrafoOrdenable(path);
                     if (grafo == null) {
                         break;
                     }
-                    resolverGrafo(grafo);
+                    resolverGrafo((GrafoOrdenable) grafo);
                     break;
                 case "2": // Matriz por pantalla
                     System.out.println("---------------- Creación de la Matriz de Adyacencia ----------------\n");
@@ -56,19 +57,19 @@ public class Prueba {
                         }
                     }
                     System.out.println("---------------- Resolución ----------------\n");
-                    grafo = new Grafo(matAdyacencia);
-                    resolverGrafo(grafo);
+                    grafo = new GrafoOrdenable(matAdyacencia);
+                    resolverGrafo((GrafoOrdenable) grafo);
                     break;
                 case "3": // Pruebas por defecto
                     System.out.println("\n---------------- Prueba 1 ----------------\n");
                     path = "EjemploGrafo.txt";
-                    grafo = cargarGrafo(path);
-                    resolverGrafo(grafo);
+                    grafo = cargarGrafoOrdenable(path);
+                    resolverGrafo((GrafoOrdenable) grafo);
                     
                     System.out.println("---------------- Prueba 2 ----------------\n");
                     path = "EjemploGrafo2.txt";
-                    grafo = cargarGrafo(path);
-                    resolverGrafo(grafo);
+                    grafo = cargarGrafoOrdenable(path);
+                    resolverGrafo((GrafoOrdenable) grafo);
                     break;
                 case "q":
                     return;
@@ -80,18 +81,18 @@ public class Prueba {
         }
     }
 
-    private static Grafo cargarGrafo(String path) {
-        GrafoReader reader = new FileGrafoReader(path);
-        Grafo grafo = null;
+    private static GrafoOrdenable cargarGrafoOrdenable(String path) {
+        GrafoReader reader = new FileGrafoReader(path,0);
+        GrafoOrdenable grafo = null;
         try {
-            grafo = reader.read();
+            grafo = (GrafoOrdenable) reader.read();
         } catch (Exception ex) {
             System.err.println("\n" + ex.getMessage() + "\n");
         }
         return grafo;
     }
 
-    private static void resolverGrafo(Grafo grafo) {
+    private static void resolverGrafo(GrafoOrdenable grafo) {
         System.out.println("- Matriz de Adyacencia del grafo -");
         GrafoPrinter printer = GrafoPrinter.getInstance();
         printer.print(grafo);

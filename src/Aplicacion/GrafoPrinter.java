@@ -1,45 +1,45 @@
 package Aplicacion;
 
 import Modelo.Arista;
-import Modelo.Collection;
+import Modelo.Contenedor;
 import Modelo.Grafo;
+import Vista.GrafoDisplay;
 
 /**
  * Clase Singleton que muestra un grafo por la consola.
+ *
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
-public class GrafoPrinter {
-   
+public class GrafoPrinter implements GrafoDisplay {
+
     private static GrafoPrinter printer = null;
-    
-    private GrafoPrinter(){
+
+    private GrafoPrinter() {
     }
-    
+
     /**
      * @return Instancia de la Clase (Singleton)
      */
-    public static GrafoPrinter getInstance(){
+    public static GrafoPrinter getInstance() {
         if (printer == null) {
             printer = new GrafoPrinter();
         }
         return printer;
     }
-    
-    /**
-     * Imprime un grafo por consola
-     * @param grafo
-     */
+
+    @Override
     public void print(Grafo grafo) {
 
-        Collection aristas = grafo.getConjuntoAristas();
+        Contenedor aristas = grafo.getContenedor();
 
         System.out.println("NodoA\tNodoB\tPeso");
-        
+
         for (Arista a : aristas) {
-            System.out.println((a.getOrigen() + 1) + "\t" + 
-                (a.getDestino() + 1) + "\t" + a.getPeso());
+
+            System.out.println((a.getOrigen() + 1) + "\t"
+                    + (a.getDestino() + 1) + "\t" + a.getPeso());
         }
-        
+
     }
 
 }

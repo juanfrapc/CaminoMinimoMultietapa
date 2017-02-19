@@ -43,12 +43,6 @@ public class Arista {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

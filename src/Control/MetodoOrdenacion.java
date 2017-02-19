@@ -1,6 +1,7 @@
 package Control;
 
-import Modelo.Collection;
+import Modelo.Contenedor;
+import Modelo.ContenedorAristas;
 
 /**
  * Interfaz de método de ordenación.
@@ -16,6 +17,6 @@ public interface MetodoOrdenacion {
     /**
      * @param conjunto
      */
-    public void ordena(Collection conjunto);
+    public void ordena(ContenedorAristas conjunto);
 
 }

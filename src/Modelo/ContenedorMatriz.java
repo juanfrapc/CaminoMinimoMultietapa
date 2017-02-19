@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @author Granfran
  */
-public class ContenedorMatriz {
+public class ContenedorMatriz implements Contenedor{
 
     private final int[][] matriz;
     private int nAristas;
@@ -26,20 +26,24 @@ public class ContenedorMatriz {
         return this.matriz.length;
     }
 
-    public int getnAristas() {
+    @Override
+    public int tamaño() {
         return nAristas;
     }
 
+    @Override
     public boolean isEmpty() {
         return nAristas == 0;
     }
 
+    @Override
     public boolean existeArista(int origen, int destino) {
         return matriz[origen][destino] != -1;
     }
 
-    public Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
+    @Override
+    public Iterator<Arista> iterator() {
+        return new Iterator<Arista>() {
 
             private int fila = 0;
             private int columna = 0;
@@ -51,7 +55,7 @@ public class ContenedorMatriz {
             }
 
             @Override
-            public Integer next() {
+            public Arista next() {
                 pos++;
                 while(matriz[fila][columna]==-1){
                     columna++;
@@ -60,17 +64,20 @@ public class ContenedorMatriz {
                         fila++;
                     }
                 }
+                int sfila = fila;
+                int scol = columna;
                 int sol = matriz[fila][columna];
                 columna++;
                 if (columna == matriz.length) {
                     columna = 0;
                     fila++;
                 }
-                return sol;
+                return new Arista(sfila, scol, sol);
             }
         };
     }
 
+    @Override
     public boolean añadeArista(int origen, int destino, int peso) {
         if (this.matriz[origen][destino] == -1) {
             this.matriz[origen][destino] = peso;
@@ -80,6 +87,7 @@ public class ContenedorMatriz {
         return false;
     }
 
+    @Override
     public boolean remove(int origen, int destino) {
         if (this.existeArista(origen, destino)) {
             this.matriz[origen][destino] = -1;
@@ -89,6 +97,7 @@ public class ContenedorMatriz {
         return false;
     }
 
+    @Override
     public void limpiar() {
         nAristas=0;
     }

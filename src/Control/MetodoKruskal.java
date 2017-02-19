@@ -1,14 +1,16 @@
 package Control;
 
 import Modelo.Arista;
-import Modelo.Collection;
+import Modelo.ContenedorAristas;
 import Modelo.Grafo;
+import Modelo.GrafoOrdenable;
 
 /**
  * Clase que contiene el método de resolcuón de árbol de expansión mínimo.
+ *
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
-public class MetodoKruskal implements MetodoResolucion {
+public class MetodoKruskal implements MetodoResolucionExpansion {
 
     @Override
     public String nombre() {
@@ -16,24 +18,24 @@ public class MetodoKruskal implements MetodoResolucion {
     }
 
     @Override
-    public Grafo resuelve(Grafo grafo, MetodoOrdenacion metodoOrd) throws Exception{
-        metodoOrd.ordena(grafo.getConjuntoAristas());
+    public Grafo resuelve(GrafoOrdenable grafo, MetodoOrdenacion metodoOrd) throws Exception {
+        metodoOrd.ordena((ContenedorAristas) grafo.getContenedor());
         int n = grafo.getnNodos();
 
-        Collection solucion = new Collection(n);
+        ContenedorAristas solucion = new ContenedorAristas(n);
         int contador = 0; // Tamaño de solución
         int[] conjunto = new int[n];
         initConjuntoNodos(conjunto, n);
         /* Inicializamos el conjunto a -1. No podemos inicializar a 0 porque el 
-        índice 0 corresponde al primer nodo.
-        */
+         índice 0 corresponde al primer nodo.
+         */
         int indiceBusqueda = 0; // Ayuda para considerar aristas examinadas
 
         while (contador != n - 1) {
             Arista arista;
-            try{
-            arista = grafo.getConjuntoAristas().getAristas()[indiceBusqueda++];
-            }catch(IndexOutOfBoundsException e){
+            try {
+                arista = ((ContenedorAristas) grafo.getContenedor()).getAristas()[indiceBusqueda++];
+            } catch (IndexOutOfBoundsException e) {
                 // Si no hay más aristas, grafo no conexo.
                 throw new Exception("Grafo no conexo", e);
             }
@@ -42,12 +44,12 @@ public class MetodoKruskal implements MetodoResolucion {
             int destinoConjunto = buscar(conjunto, arista.getDestino());
             if (origenConjunto != destinoConjunto) {
                 fusionar(conjunto, n, origenConjunto, destinoConjunto);
-                solucion.add(new Arista(arista.getOrigen(),
-                        arista.getDestino(), arista.getPeso()));
+                solucion.añadeArista(arista.getOrigen(), arista.getDestino(), 
+                        arista.getPeso());
                 contador++;
             }
         }
-        return new Grafo(grafo.getnNodos(), solucion);
+        return new GrafoOrdenable(grafo.getnNodos(), solucion);
     }
 
     private void initConjuntoNodos(int[] conjunto, int n) {
