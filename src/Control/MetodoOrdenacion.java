@@ -1,6 +1,5 @@
 package Control;
 
-import Modelo.Contenedor;
 import Modelo.ContenedorAristas;
 
 /**

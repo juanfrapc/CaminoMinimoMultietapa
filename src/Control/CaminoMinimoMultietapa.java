@@ -6,7 +6,13 @@ import Modelo.GrafoMultietapa;
 public class CaminoMinimoMultietapa {
 
     private GrafoMultietapa grafo;
+    private int costeParcial = Integer.MAX_VALUE;
     
+    private Pila pila;
+    private GrafoMultietapa solucion;
+    private int destino;
+
+
     private class Pila{
 
         private final int[] pila;
@@ -40,13 +46,37 @@ public class CaminoMinimoMultietapa {
         
         this.grafo=grafo;
         
-        Pila pila = new Pila(grafo.getnNodos());
+        this.pila = new Pila(grafo.getnNodos());
+        this.solucion=solucion;
+        this.destino=destino;
         pila.push(origen);
-        while (pila.getnNodos() != 0){
-            int nodo = pila .pop();
-            int[] hijos = ((ContenedorMatriz)this.grafo.getContenedor()).getHijos(nodo);
-        }
         
+        
+        return true;
+    }
+    
+    private boolean resuelve() {
+        if (verifica(solucion, destino)) return true;
+        
+        while (pila.getnNodos() != 0){
+            int nodo = pila.pop();
+            int[] hijos = ((ContenedorMatriz)this.grafo.getContenedor()).getHijos(nodo);
+            for (int hijo : hijos) {
+                if (grafo.etapaNodo(hijo)>grafo.etapaNodo(nodo)) {
+                    pila.push(hijo);
+                }
+            }
+        }
+        return true;
+    }
+    
+    private boolean verifica(GrafoMultietapa solucion, int destino) {
+        for (int i = 0; i < solucion.getnNodos(); i++) {
+            if (grafo.getContenedor().existeArista(i, destino)){
+                return true;
+            }
+        }
+        return false;
     }
     
 }

@@ -103,6 +103,15 @@ public class ContenedorMatriz implements Contenedor{
     }
 
     public int[] getHijos(int nodo) {
-        
+        int contador = 0;
+        for (int hijo: matriz[nodo]) {
+            if (hijo != -1)contador++;
+        }
+        int[] hijos = new int[contador];
+        contador = 0;
+        for (int hijo: matriz[nodo]) {
+            if (hijo != -1) hijos[contador++] = hijo;
+        }
+        return hijos;
     }
 }
