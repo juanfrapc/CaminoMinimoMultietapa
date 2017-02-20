@@ -36,7 +36,7 @@ public class FileGrafoReader implements GrafoReader {
             int[][] matriz = new int[nNodos][nNodos];// matriz destino
             String arista;
             int i = 0, j = 0;
-            while ((arista = bufferedReader.readLine()) != null) {
+            while ((arista = bufferedReader.readLine()) != null && i<nNodos) {
                 String[] parametros = arista.split("\\s+");
                 for (String parametro : parametros) {
                     matriz[i][j++] = Integer.parseInt(parametro);
@@ -44,8 +44,16 @@ public class FileGrafoReader implements GrafoReader {
                 j = 0;
                 i++;
             }
-            return tipo == 0 ? new GrafoOrdenable(matriz): new GrafoMultietapa(matriz);
-
+            String etapas;
+            int[] vectorEtapas = new int[nNodos];
+            if (tipo==1){
+                etapas = bufferedReader.readLine();
+                String[] parametros = etapas.split("\\s+");
+                for (int k = 0; k < parametros.length; k++) {
+                    vectorEtapas[k]=Integer.parseInt(parametros[k]);
+                }
+            }
+            return tipo == 0 ? new GrafoOrdenable(matriz): new GrafoMultietapa(vectorEtapas,matriz);
         } catch (IOException ex) {
             // Ruta no válida
             throw new Exception("Fichero no válido", ex);

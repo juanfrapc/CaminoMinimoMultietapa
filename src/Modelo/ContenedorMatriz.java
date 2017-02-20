@@ -101,4 +101,8 @@ public class ContenedorMatriz implements Contenedor{
     public void limpiar() {
         nAristas=0;
     }
+
+    public int[] getHijos(int nodo) {
+        
+    }
 }

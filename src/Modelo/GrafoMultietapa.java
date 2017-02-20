@@ -2,9 +2,11 @@ package Modelo;
 
 public class GrafoMultietapa implements Grafo {
 
+    private final int[] etapas;
     private final ContenedorMatriz contenedorMatriz;
 
-    public GrafoMultietapa(int[][] matAdyacencia) {
+    public GrafoMultietapa(int[] etapas, int[][] matAdyacencia) {
+        this.etapas = etapas;
         this.contenedorMatriz = new ContenedorMatriz(matAdyacencia);
     }
 
@@ -21,6 +23,10 @@ public class GrafoMultietapa implements Grafo {
     @Override
     public Contenedor getContenedor() {
         return contenedorMatriz;    
+    }
+    
+    public int etapaNodo(int nodo) {
+        return etapas[nodo];
     }
 
 }
