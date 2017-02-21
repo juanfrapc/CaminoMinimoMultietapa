@@ -134,4 +134,9 @@ public class ContenedorAristas implements Contenedor{
         this.nAristas=0;
     }
 
+    @Override
+    public int getPeso(int nodoPadre, int nodo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

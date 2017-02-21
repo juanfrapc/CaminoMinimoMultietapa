@@ -114,4 +114,9 @@ public class ContenedorMatriz implements Contenedor{
         }
         return hijos;
     }
+
+    @Override
+    public int getPeso(int nodoPadre, int nodo) {
+        return matriz[nodoPadre][nodo];
+    }
 }

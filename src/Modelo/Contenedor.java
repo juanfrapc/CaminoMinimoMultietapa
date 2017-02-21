@@ -14,4 +14,6 @@ public interface Contenedor extends Iterable<Arista>{
 
     public void limpiar();
 
+    public int getPeso(int nodoPadre, int nodo);
+
 }
