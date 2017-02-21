@@ -100,6 +100,11 @@ public class ContenedorMatriz implements Contenedor {
     @Override
     public void limpiar() {
         nAristas = 0;
+        for (int i = 0; i < this.getnNodos(); i++) {
+            for (int j = 0; j < this.getnNodos(); j++) {
+                matriz[i][j] = -1;
+            }
+        }
     }
 
     public int[] getHijos(int nodo) {

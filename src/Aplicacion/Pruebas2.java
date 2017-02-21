@@ -18,10 +18,9 @@ public class Pruebas2 {
             System.out.println("\n" + ex.getMessage() + "\n");
         }
         printer.print(grafo);
-        
+
         CaminoMinimoMultietapa resol = new CaminoMinimoMultietapa();
-        resol.resuelve(grafo, 0, 7, sol);
+        System.out.println("Coste óptimo: " + resol.resuelve(grafo, 0, 7, sol));
         printer.print(sol);
     }
-
 }
