@@ -29,31 +29,29 @@ public class FileGrafoReader implements GrafoReader {
     public Grafo read() throws Exception {
 
         try {
-            BufferedReader bufferedReader
+            BufferedReader reader
                     = new BufferedReader(new FileReader(new File(path)));
 
-            int nNodos = Integer.parseInt(bufferedReader.readLine().split("=")[1].trim());
+            int nNodos = Integer.parseInt(reader.readLine().split("=")[1].trim());
             int[][] matriz = new int[nNodos][nNodos];// matriz destino
-            String arista;
+            String fila;
             int i = 0, j = 0;
-            while ((arista = bufferedReader.readLine()) != null && i<nNodos) {
-                String[] parametros = arista.split("\\s+");
+            while ((fila = reader.readLine()) != null && i < nNodos) {
+                String[] parametros = fila.split("\\s+");
                 for (String parametro : parametros) {
                     matriz[i][j++] = Integer.parseInt(parametro);
                 }
                 j = 0;
                 i++;
             }
-            String etapas;
             int[] vectorEtapas = new int[nNodos];
-            if (tipo==1){
-                etapas = bufferedReader.readLine();
-                String[] parametros = etapas.split("\\s+");
-                for (int k = 0; k < parametros.length; k++) {
-                    vectorEtapas[k]=Integer.parseInt(parametros[k]);
+            if (tipo == 1) {
+                String[] parametros = fila.split("\\s+");
+                for (int k = 0; k < parametros.length - 1; k++) {
+                    vectorEtapas[k] = Integer.parseInt(parametros[k + 1]);
                 }
             }
-            return tipo == 0 ? new GrafoOrdenable(matriz): new GrafoMultietapa(vectorEtapas,matriz);
+            return tipo == 0 ? new GrafoOrdenable(matriz) : new GrafoMultietapa(vectorEtapas, matriz);
         } catch (IOException ex) {
             // Ruta no válida
             throw new Exception("Fichero no válido", ex);

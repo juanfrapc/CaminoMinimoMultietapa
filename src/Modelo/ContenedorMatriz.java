@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @author Granfran
  */
-public class ContenedorMatriz implements Contenedor{
+public class ContenedorMatriz implements Contenedor {
 
     private final int[][] matriz;
     private int nAristas;
@@ -57,7 +57,7 @@ public class ContenedorMatriz implements Contenedor{
             @Override
             public Arista next() {
                 pos++;
-                while(matriz[fila][columna]==-1){
+                while (matriz[fila][columna] == -1) {
                     columna++;
                     if (columna == matriz.length) {
                         columna = 0;
@@ -99,18 +99,22 @@ public class ContenedorMatriz implements Contenedor{
 
     @Override
     public void limpiar() {
-        nAristas=0;
+        nAristas = 0;
     }
 
     public int[] getHijos(int nodo) {
         int contador = 0;
-        for (int hijo: matriz[nodo]) {
-            if (hijo != -1)contador++;
+        for (int hijo : matriz[nodo]) {
+            if (hijo != -1) {
+                contador++;
+            }
         }
         int[] hijos = new int[contador];
         contador = 0;
-        for (int hijo: matriz[nodo]) {
-            if (hijo != -1) hijos[contador++] = hijo;
+        for (int i=0;i<matriz[nodo].length;i++) {
+            if (matriz[nodo][i] != -1) {
+                hijos[contador++] = i;
+            }
         }
         return hijos;
     }
