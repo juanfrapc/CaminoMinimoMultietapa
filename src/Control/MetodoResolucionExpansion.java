@@ -4,7 +4,7 @@ import Modelo.Grafo;
 import Modelo.GrafoOrdenable;
 
 /**
- * Interfaz de metodo de rosolucion de problemas
+ * Interfaz de metodo de resolucion de problemas
  * @author Juan Francisco Pérez Caballero && Gabriel García Buey
  */
 public interface MetodoResolucionExpansion {

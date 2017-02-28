@@ -11,14 +11,16 @@ public class CaminoMinimoMultietapa {
     private GrafoMultietapa solucion;
     private int destino;
 
-    public int resuelve(GrafoMultietapa grafo, int origen, int destino, GrafoMultietapa solucion) {
+    public int resuelve(GrafoMultietapa grafo, int origen, int destino, GrafoMultietapa solucion) throws Exception {
 
         this.grafo = grafo;
-
         this.solucion = solucion;
         this.destino = destino;
-
-        resuelve(origen, 0);
+        if (grafo.etapaNodo(origen) == grafo.etapaNodo(destino)) {
+            throw new Exception("Error: los nodos pertenecen a la misma etapa");
+        } else if (resuelve(origen, 0) == -1) {
+            throw new Exception("Error: no hay camino que llegue al Destino especificado");
+        }
         return cota;
     }
 
@@ -33,14 +35,14 @@ public class CaminoMinimoMultietapa {
 
         for (int hijo : hijos) {
 
-            System.out.println("NODO: " + nodo);
-            System.out.println("hijo " + hijo);
+            //System.out.println("NODO: " + nodo);
+            //System.out.println("hijo " + hijo);
             int peso = grafo.getContenedor().getPeso(nodo, hijo);
-            System.out.println("CA: " + (peso + costeAcumulado) + "\n");
+            //System.out.println("CA: " + (peso + costeAcumulado) + "\n");
 
             if (peso + costeAcumulado < cota && grafo.etapaNodo(nodo) < grafo.etapaNodo(hijo)) {
                 if (resuelve(hijo, peso + costeAcumulado) != -1) {
-                    System.out.println(nodo + "\t" + hijo + "\t" + peso);
+                    //System.out.println(nodo + "\t" + hijo + "\t" + peso);
                     solucion.getContenedor().añadeArista(nodo, hijo, peso);
                     mejorHijo = hijo;
                 }
@@ -53,7 +55,7 @@ public class CaminoMinimoMultietapa {
         if (nodo == destino && cota > costeAcumulado) {
             cota = costeAcumulado;
             solucion.getContenedor().limpiar();
-            System.out.println("limpia");
+            //System.out.println("limpia");
             return true;
         }
         return false;
